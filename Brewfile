@@ -1,0 +1,8 @@
+brew "awscli"
+brew "unrar"
+brew "go"
+brew "git"
+brew "github/gh/gh"
+brew "jump"
+brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"

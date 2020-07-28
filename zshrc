@@ -40,7 +40,7 @@ alias nginx-conf="sudo code /usr/local/etc/nginx/nginx.conf"
 # Git
 alias gl="git pull"
 alias gc="git commit"
-alias gtb="git commit --allow-empty -m \"Trigger Build\""
+alias gce="git commit --allow-empty -m \"Trigger Build\""
 
 # Docker
 alias dil="docker image ls -a"
@@ -85,8 +85,6 @@ zstyle ':vcs_info:git:*' formats '• (%b) '
 # Set up the prompt (with git branch name)
 setopt PROMPT_SUBST
 PROMPT='/%1d ${vcs_info_msg_0_}#: '
-
-# PROMPT="%1d ~%# "
 
 # -----------------------------------------
 # HISTORY

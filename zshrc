@@ -86,6 +86,8 @@ zstyle ':vcs_info:git:*' formats '• (%b) '
 setopt PROMPT_SUBST
 PROMPT='/%1d ${vcs_info_msg_0_}#: '
 
+ZSH_DISABLE_COMPFIX=true
+
 # -----------------------------------------
 # HISTORY
 # -----------------------------------------

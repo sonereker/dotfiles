@@ -47,24 +47,11 @@ alias dil="docker image ls -a"
 alias dip="docker image prune -a"
 alias dcl="docker container ls -a"
 
-# Jira
-jrw() {
-    curl -s http://private.central-eks.aureacentral.com/pca-qe/api/review/$1 | json_pp
-}
-
-slugify() {
-    echo "$1" | iconv -t ascii//TRANSLIT | sed -E 's/[~\^]+//g' | sed -E 's/[^a-zA-Z0-9]+/-/g' | sed -E 's/^-+\|-+$//g' | sed -E 's/^-+//g' | sed -E 's/-+$//g' | tr A-Z a-z
-}
-
 # Dirs
 c() { cd ~/Code/$1; }
 _c() { _files -W ~/Code -/; }
 
 unsetopt correct_all
-
-# Projects
-alias mitui="cd ~/Code/jive/jive-cdm-mitui-cloud/packages/service-chrome"
-alias run-mitui="cd ~/Code/jive/jive-cdm-mitui-cloud/packages/service-chrome && npm run start"
 
 # Quick Nav
 setopt autocd autopushd
@@ -117,16 +104,6 @@ bindkey "^[[B" history-beginning-search-forward-end
 # EXPORT
 # -----------------------------------------
 
-# Homebrew
-export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
-
-# Tools
-export PATH="$PATH:$HOME/Tools"
-export PATH="$PATH:$HOME/Tools/phantomjs-2.1.1-macosx/bin"
-export PATH="$PATH:$HOME/Tools/apache-ant-1.7.0/bin"
-export PATH="$PATH:$HOME/Tools/jboss-3.2.5/bin"
-export PATH="$PATH:/Applications/DevSpaces.app/Contents/MacOS"
-
 # OpenSSL
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/openssl/lib"
@@ -139,8 +116,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 
 # SDKMAN - THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/aurea/.sdkman"
-[[ -s "/Users/aurea/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/aurea/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="~/.sdkman"
+[[ -s "~/.sdkman/bin/sdkman-init.sh" ]] && source "~/.sdkman/bin/sdkman-init.sh"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"

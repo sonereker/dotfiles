@@ -1,9 +1,9 @@
 [user]
-name = Soner Eker
-email = sonereker@gmail.com
+    name = Soner Eker
+    email = sonereker@gmail.com
 
 [github]
-user = sonereker
+    user = sonereker
 
 [core]
 	autocrlf = input

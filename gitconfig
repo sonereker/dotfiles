@@ -4,3 +4,7 @@ email = sonereker@gmail.com
 
 [github]
 user = sonereker
+
+[core]
+	autocrlf = input
+	hooksPath = /Users/soner/Code/dotfiles/git-hooks

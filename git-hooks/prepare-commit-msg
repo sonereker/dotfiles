@@ -13,6 +13,6 @@ if [ -z "$EMAIL" ]; then
     exit 1
 fi
 
-git interpret-trailers --if-exists doNothing --trailer \
-    "Signed-off-by: $NAME <$EMAIL>" \
-    --in-place "$1"
+ git interpret-trailers --if-exists doNothing --trailer \
+     "Signed-off-by: $NAME <$EMAIL>" \
+     --in-place "$1"

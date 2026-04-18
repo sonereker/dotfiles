@@ -51,11 +51,21 @@ set -g fish_prompt_pwd_dir_length 1                # collapse parent dirs to 1 c
 alias g  git
 alias ls "eza --color=always --long --hyperlink --git --git-repos --no-user --no-permissions"
 alias la "ls -a"
-alias kd "kamal deploy"
-alias ys "yarn serve"
-alias yd "yarn dev"
-alias mw "make watch"
-alias ng "ngrok http 3000"
+
+# Abbreviations — expand inline on space/enter so the full command is visible
+# before it runs (safer for destructive kamal ops; keeps history readable).
+abbr -a kd   kamal deploy
+abbr -a kl   kamal app logs
+abbr -a klf  kamal app logs -f
+abbr -a ke   kamal app exec -i --reuse
+abbr -a ks   kamal app shell
+abbr -a kab  kamal accessory boot
+abbr -a kse  kamal server exec
+abbr -a kc   kamal config
+abbr -a ys   yarn serve
+abbr -a yd   yarn dev
+abbr -a mw   make watch
+abbr -a ng   ngrok http 3000
 
 # ============================================================
 # Folder access  (functions defined in functions/code.fish)

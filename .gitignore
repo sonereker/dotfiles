@@ -1,2 +1,27 @@
+# OS / editor junk
 .DS_Store
-/.idea
+.idea/
+
+# Lockfile (regenerated)
+Brewfile.lock.json
+
+# Fish: local secrets (NEVER commit)
+fish/config-local.fish
+
+# Fish: runtime state (auto-managed per machine)
+fish/fish_variables
+fish/fish_history
+
+# Fish: plugin-managed files (re-installed via `fisher update`)
+fish/functions/fisher.fish
+fish/functions/_nvm_*.fish
+fish/functions/nvm.fish
+fish/functions/__fzf*.fish
+fish/functions/__fzfcmd.fish
+fish/completions/fisher.fish
+fish/completions/nvm.fish
+fish/conf.d/fzf.fish
+fish/conf.d/nvm.fish
+
+# Fish: auto-generated migration snapshots (fish 4.3+, machine-specific)
+fish/conf.d/fish_frozen_*.fish

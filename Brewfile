@@ -1,12 +1,23 @@
-brew 'awscli'
-brew 'unrar'
-brew 'go'
+# Core
+brew 'fish'
 brew 'git'
 brew 'gh'
-brew 'jump'
-brew 'glow'
-brew 'nvm'
 brew 'tree'
-brew 'exa'
-brew 'fish'
-brew 'peco'
+brew 'glow'
+brew 'unar'           # extracts rar/zip/7z/etc (replaces deprecated `unrar`)
+
+# Languages / runtimes
+brew 'go'
+brew 'ruby'
+brew 'golangci-lint'
+
+# Shell tools
+brew 'fzf'           # fuzzy finder (Ctrl+R, Ctrl+T, Alt+C bindings)
+brew 'zoxide'        # smarter `cd` — `z <fragment>`
+brew 'eza'           # modern `ls` (used by the `ls` alias in fish/config.fish)
+
+# Cloud / deploy
+brew 'awscli'
+tap  'ngrok/ngrok'
+cask 'ngrok'               # ngrok ships as a cask via its own tap
+# NOTE: install kamal via `gem install kamal` (not in homebrew)

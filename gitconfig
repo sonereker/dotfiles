@@ -6,5 +6,4 @@
     user = sonereker
 
 [core]
-	autocrlf = input
-	hooksPath = /Users/soner/Code/dotfiles/git-hooks
+    autocrlf = input

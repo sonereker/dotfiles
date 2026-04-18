@@ -1,0 +1,32 @@
+shell-integration = fish
+
+font-family = "JetBrains Mono"
+font-family-bold = "JetBrains Mono Bold"
+font-size = 13
+adjust-cell-height = 30%
+font-thicken = true
+
+theme = Atom One Dark
+
+shell-integration-features = no-cursor
+cursor-style = block
+cursor-color = #00b4ff
+mouse-hide-while-typing = true
+mouse-scroll-multiplier = 2
+
+macos-titlebar-style = native
+window-title-font-family = "JetBrains Mono"
+window-padding-x = 16
+window-padding-y = 16
+window-padding-balance = true
+window-width = 110
+window-height = 30
+window-save-state = always
+window-colorspace = "display-p3"
+
+selection-invert-fg-bg = true
+
+adjust-underline-position = 1
+adjust-underline-thickness = 1
+
+keybind = global:opt+s=toggle_quick_terminal

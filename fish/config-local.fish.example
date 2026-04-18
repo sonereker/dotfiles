@@ -1,0 +1,19 @@
+# Copy this file to config-local.fish and fill in real values.
+# Never commit config-local.fish.
+
+set -x LEADJET_PASSPHRASE      ""
+set -x PROD_LEADJET_PASSPHRASE ""
+
+# Progresscue local
+set -x RESEND_API_KEY             ""
+set -x LOGIN_GITHUB_CLIENT_ID     ""
+set -x LOGIN_GITHUB_CLIENT_SECRET ""
+
+set -x INTEGRATION_SLACK_CLIENT_ID     ""
+set -x INTEGRATION_SLACK_CLIENT_SECRET ""
+
+set -x INTEGRATION_GITHUB_APP_ID         ""
+set -x INTEGRATION_GITHUB_CLIENT_ID      ""
+set -x INTEGRATION_GITHUB_CLIENT_SECRET  ""
+set -x INTEGRATION_GITHUB_WEBHOOK_SECRET ""
+set -x INTEGRATION_GITHUB_PRIVATE_KEY    ""

@@ -10,7 +10,6 @@ fish/config-local.fish
 
 # Fish: runtime state (auto-managed per machine)
 fish/fish_variables
-fish/fish_history
 
 # Fish: plugin-managed files (re-installed by `fisher update` from `make sync`).
 # fisher.fish itself is committed so `make` doesn't need a curl bootstrap.

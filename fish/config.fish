@@ -2,8 +2,14 @@
 # Shell behavior
 # ============================================================
 set -g fish_greeting ""                          # silence the welcome banner
-set -gx TERM xterm-256color                      # 256-color terminal capability
-set -U  fish_features completion_insensitive,qmark-noglob
+
+# Modern terminals (Ghostty, iTerm2) set TERM themselves with their own terminfo
+# entries that give better features (true color, undercurl); don't override.
+
+# fish_features must be -U (universal) because fish reads it before parsing
+# config.fish on the next shell. Skip the write if it's already set so we
+# don't churn the universal store on every shell start.
+set -q fish_features; or set -U fish_features completion_insensitive qmark-noglob
 
 set -g HISTSIZE 1000000                          # in-memory history cap
 set -g SAVEHIST 1000000                          # on-disk history cap
@@ -23,14 +29,12 @@ fish_add_path -g $HOME/.local/bin
 fish_add_path -g /opt/homebrew/bin
 fish_add_path -g (go env GOPATH)/bin                          # Go-installed binaries
 fish_add_path -g $HOME/.yarn/bin                              # Yarn global bin
-fish_add_path -g $HOME/.config/yarn/global/node_modules/.bin  # Yarn local global modules
 
 # ============================================================
 # Environment
 # ============================================================
 set -gx GOPATH           $HOME/go
-set -gx NVM_DIR          $HOME/.nvm                            # legacy node nvm dir
-set -gx TYPST_FONT_PATHS "/Users/soner/Library/Application Support/Adobe/CoreSync/plugins/livetype/.r"
+set -gx TYPST_FONT_PATHS "$HOME/Library/Application Support/Adobe/CoreSync/plugins/livetype/.r"
 
 # ============================================================
 # Prompt / theme

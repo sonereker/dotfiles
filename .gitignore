@@ -13,12 +13,11 @@ fish/fish_variables
 fish/fish_history
 
 # Fish: plugin-managed files (re-installed via `fisher update`)
-fish/functions/fisher.fish
+# fisher.fish itself is committed so fresh installs don't need a curl bootstrap.
 fish/functions/_nvm_*.fish
 fish/functions/nvm.fish
 fish/functions/__fzf*.fish
 fish/functions/__fzfcmd.fish
-fish/completions/fisher.fish
 fish/completions/nvm.fish
 fish/conf.d/fzf.fish
 fish/conf.d/nvm.fish

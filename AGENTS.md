@@ -7,12 +7,12 @@ Notes for anyone (or any agent) changing this repo.
 - `Makefile` `sync` symlinks **fish/** (whole dir), **gitconfig**, **ghostty/config**, and **zed/{settings,keymap}.json** into place. Idempotent.
 - `fish/config.fish` is heavily commented on purpose — keep it that way.
 - `fish/config-local.fish` holds secrets, is auto-sourced, gitignored. Keep `config-local.fish.example` in sync when adding/removing vars.
-- Fish plugin files (fisher, nvm.fish, fzf) are gitignored — `fisher update` re-installs them.
+- Fish plugin files for nvm.fish + fzf are gitignored — `fisher update` re-installs them. **fisher itself is committed** (`fish/functions/fisher.fish`, `fish/completions/fisher.fish`) so a fresh clone doesn't need a curl bootstrap.
 
 ## Bootstrap order
 
 1. `make` — runs `deps` (`brew bundle` + `gem install kamal`) then `sync` (symlinks)
-2. Bootstrap fisher → `fisher update`
+2. `fish -c 'fisher update'` (installs nvm.fish + fzf — fisher itself ships in the repo)
 3. Fill in `~/.config/fish/config-local.fish`
 
 ## Gotchas

@@ -1,0 +1,113 @@
+\documentclass[a4paper,landscape,10pt]{article}
+
+\usepackage[top=8mm,left=8mm,right=8mm,bottom=12mm,includefoot,footskip=6mm]{geometry}
+\usepackage{multicol}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{titlesec}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+
+\setlength{\columnsep}{6mm}
+\setlength{\parindent}{0pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyfoot[C]{\small\texttt{github.com/sonereker/dotfiles}}
+
+\titleformat{\section}
+  {\normalfont\large\bfseries}{}{0pt}{}[\vspace{-2pt}\hrule height 0.4pt\vspace{2pt}]
+\titlespacing*{\section}{0pt}{8pt}{2pt}
+
+\newcommand{\kbd}[1]{\fbox{\rule[-1pt]{0pt}{8pt}\texttt{\small #1}}}
+\newcommand{\cmd}[1]{\texttt{#1}}
+
+\newenvironment{kvtable}
+  {\begin{tabular}{@{}>{\ttfamily}l@{\hspace{1em}}l@{}}}
+  {\end{tabular}}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries Fish Cheatsheet}
+\end{center}
+\vspace{-6pt}
+
+\begin{multicols}{3}
+
+\section*{Shortcuts}
+\begin{kvtable}
+g    & git \\
+ls   & eza --long --git --hyperlink \ldots \\
+la   & ls -a \\
+kd   & kamal deploy \\
+kl   & kamal app logs \\
+klf  & kamal app logs -f \\
+ke   & kamal app exec -i --reuse \\
+ks   & kamal app shell \\
+kab  & kamal accessory boot \\
+kse  & kamal server exec \\
+kc   & kamal config \\
+ys   & yarn serve \\
+yd   & yarn dev \\
+mw   & make watch \\
+ng   & ngrok http 3000 \\
+\end{kvtable}
+
+\section*{Navigation}
+\begin{tabular}{@{}>{\ttfamily}l@{\hspace{1em}}l@{}}
+code        & fzf-pick under \cmd{\textasciitilde/Code} \\
+code \textit{name} & cd \cmd{\textasciitilde/Code/\textit{name}} \\
+z \textit{query}   & smart cd (zoxide) \\
+nvm use \textit{v} & activate Node version \\
+nvm install \textit{v} & install Node version \\
+nvm ls      & list installed versions \\
+fisher update  & update plugins \\
+fisher list    & list installed plugins \\
+\end{tabular}
+
+\section*{Shell behaviour}
+\begin{tabular}{@{}>{\ttfamily}l@{\hspace{0.8em}}l@{}}
+HISTSIZE  & 1{,}000{,}000 \\
+SAVEHIST  & 1{,}000{,}000 \\
+ulimit -n & 200{,}000 \\
+greeting  & silenced \\
+\end{tabular}
+
+\columnbreak
+
+\section*{Key bindings (FZF)}
+\begin{tabular}{@{}l@{\hspace{1em}}l@{}}
+\kbd{Ctrl-T}       & find file / folder \\
+\kbd{Ctrl-R}       & reverse history search \\
+\kbd{Alt-C}        & cd (fzf) \\
+\kbd{Alt-Shift-C}  & cd incl. hidden \\
+\kbd{Ctrl-G}       & open file \\
+\kbd{Ctrl-O}       & open in editor \\
+\kbd{Tab}          & fzf completion (if \cmd{FZF\_COMPLETE}) \\
+\end{tabular}
+
+\section*{Fisher plugins}
+\begin{tabular}{@{}>{\ttfamily}l@{\hspace{1em}}l@{}}
+jorgebucaran/nvm.fish & Node version mgr \\
+jethrokuan/fzf        & FZF key bindings \\
+jorgebucaran/fisher   & plugin manager \\
+\end{tabular}
+
+\columnbreak
+
+\section*{PATH (prepended)}
+\begin{enumerate}[leftmargin=*,nosep,label=\arabic*.]
+\item \cmd{\textasciitilde/bin}
+\item \cmd{\textasciitilde/.local/bin}
+\item \cmd{/opt/homebrew/bin}
+\item \cmd{\$(go env GOPATH)/bin}
+\item \cmd{\textasciitilde/.yarn/bin}
+\end{enumerate}
+
+\end{multicols}
+
+\end{document}

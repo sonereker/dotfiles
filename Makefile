@@ -18,13 +18,14 @@ sync:
 	# Seed config-local.fish from the example if it doesn't exist yet.
 	[ -e ~/.config/fish/config-local.fish ] || cp $(DOTFILES)/fish/config-local.fish.example ~/.config/fish/config-local.fish
 
+	# Install / refresh fish plugins declared in fish/fish_plugins.
+	fish -c 'fisher update'
+
 	# Don't show "last login" message on shell startup.
 	touch ~/.hushlogin
 
 	@echo ""
-	@echo "  Done. Next:"
-	@echo "    1. fish -c 'fisher update'"
-	@echo "    2. Fill in secrets at ~/.config/fish/config-local.fish"
+	@echo "  Done. Fill in secrets at ~/.config/fish/config-local.fish"
 
 clean:
 	[ ! -L ~/.config/fish ]              || rm ~/.config/fish

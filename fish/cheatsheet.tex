@@ -40,11 +40,17 @@
 
 \begin{multicols}{3}
 
-\section*{Shortcuts}
+\section*{Aliases}
+\noindent{\small\itshape silent substitution; runs as-is\par}
 \begin{kvtable}
 g    & git \\
 ls   & eza --long --git --hyperlink \ldots \\
 la   & ls -a \\
+\end{kvtable}
+
+\section*{Abbreviations}
+\noindent{\small\itshape expand inline on Space/Enter --- visible in history, editable\par}
+\begin{kvtable}
 kd   & kamal deploy \\
 kl   & kamal app logs \\
 klf  & kamal app logs -f \\
@@ -59,14 +65,18 @@ mw   & make watch \\
 ng   & ngrok http 3000 \\
 \end{kvtable}
 
+\par\vspace{3pt}
+\begin{tabular}{@{}>{\ttfamily}l@{\hspace{1em}}l@{}}
+abbr -a \textit{name} \textit{cmd} & add \\
+abbr --erase \textit{name}          & remove \\
+abbr --show                         & list all \\
+\end{tabular}
+
 \section*{Navigation}
 \begin{tabular}{@{}>{\ttfamily}l@{\hspace{1em}}l@{}}
 code        & fzf-pick under \cmd{\textasciitilde/Code} \\
 code \textit{name} & cd \cmd{\textasciitilde/Code/\textit{name}} \\
 z \textit{query}   & smart cd (zoxide) \\
-nvm use \textit{v} & activate Node version \\
-nvm install \textit{v} & install Node version \\
-nvm ls      & list installed versions \\
 fisher update  & update plugins \\
 fisher list    & list installed plugins \\
 \end{tabular}
@@ -94,10 +104,30 @@ greeting  & silenced \\
 
 \section*{Fisher plugins}
 \begin{tabular}{@{}>{\ttfamily}l@{\hspace{1em}}l@{}}
-jorgebucaran/nvm.fish & Node version mgr \\
 jethrokuan/fzf        & FZF key bindings \\
 jorgebucaran/fisher   & plugin manager \\
 \end{tabular}
+
+\section*{fd (find)}
+\begin{kvtable}
+fd \textit{pat}            & find by name \\
+fd -e py \textit{pat}      & filter by extension \\
+fd -t d \textit{pat}       & dirs only (\cmd{-t f} files) \\
+fd -H                      & include hidden \\
+fd -I                      & ignore \cmd{.gitignore} \\
+fd \textit{pat} \textit{path}  & search under path \\
+fd -x \textit{cmd} \{\}    & run cmd per match \\
+\end{kvtable}
+
+\section*{bat (cat)}
+\begin{kvtable}
+bat \textit{file}              & view w/ syntax \\
+bat -p \textit{file}           & plain (pipe-safe) \\
+bat -n \textit{file}           & line numbers only \\
+bat -r 10:30 \textit{file}     & line range \\
+bat --diff \textit{file}       & only changed hunks \\
+bat -l rust \textit{file}      & force language \\
+\end{kvtable}
 
 \columnbreak
 
@@ -115,7 +145,22 @@ jorgebucaran/fisher   & plugin manager \\
 fzf     & Ctrl-T / Ctrl-R / Alt-C bindings \\
 zoxide  & \cmd{z \textit{query}} smart cd \\
 eza     & modern \cmd{ls} (via alias) \\
+fd      & modern \cmd{find}; indexes fzf pickers \\
+bat     & syntax-highlighted \cmd{cat}; fzf preview \\
 \end{tabular}
+
+\section*{mise (runtime mgr)}
+\noindent{\small\itshape polyglot version mgr; reads \cmd{.mise.toml} per dir\par}
+\begin{kvtable}
+mise use node@lts       & pin for cwd \\
+mise use -g node@lts    & set global default \\
+mise install            & install tools in config \\
+mise ls                 & installed versions \\
+mise ls-remote node     & available versions \\
+mise current            & active versions here \\
+mise upgrade            & upgrade pinned tools \\
+mise x node@20 -- \textit{cmd} & run once with version \\
+\end{kvtable}
 
 \end{multicols}
 

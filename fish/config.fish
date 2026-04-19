@@ -3,9 +3,6 @@
 # ============================================================
 set -g fish_greeting ""                          # silence the welcome banner
 
-# Modern terminals (Ghostty, iTerm2) set TERM themselves with their own terminfo
-# entries that give better features (true color, undercurl); don't override.
-
 # fish_features must be -U (universal) because fish reads it before parsing
 # config.fish on the next shell. Skip the write if it's already set so we
 # don't churn the universal store on every shell start.
@@ -35,6 +32,14 @@ fish_add_path -g $HOME/.yarn/bin                              # Yarn global bin
 # ============================================================
 set -gx GOPATH           $HOME/go
 set -gx TYPST_FONT_PATHS "$HOME/Library/Application Support/Adobe/CoreSync/plugins/livetype/.r"
+
+# fzf: use fd for fast indexing, bat for file previews
+set -gx FZF_FIND_FILE_COMMAND      "fd --type f --hidden --exclude .git"
+set -gx FZF_CD_COMMAND             "fd --type d --exclude .git"
+set -gx FZF_CD_WITH_HIDDEN_COMMAND "fd --type d --hidden --exclude .git"
+set -gx FZF_OPEN_COMMAND           "fd --type f --hidden --exclude .git"
+set -gx FZF_FIND_FILE_OPTS         "--preview 'bat --color=always --line-range=:200 {}'"
+set -gx FZF_OPEN_OPTS              "--preview 'bat --color=always --line-range=:200 {}'"
 
 # ============================================================
 # Prompt / theme
@@ -78,6 +83,7 @@ abbr -a ng   ngrok http 3000
 # Tools
 # ============================================================
 zoxide init fish | source                          # `z <query>` smart cd
+command -q mise && mise activate fish | source     # polyglot runtime mgr (Node/Go/Ruby/Python)
 
 # ============================================================
 # Local-only overrides (secrets, machine-specific env)

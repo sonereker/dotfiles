@@ -15,6 +15,9 @@ brew 'golangci-lint'
 brew 'fzf'           # fuzzy finder (Ctrl+R, Ctrl+T, Alt+C bindings)
 brew 'zoxide'        # smarter `cd` — `z <fragment>`
 brew 'eza'           # modern `ls` (used by the `ls` alias in fish/config.fish)
+brew 'fd'            # modern `find` (indexes fzf pickers — see FZF_*_COMMAND vars)
+brew 'bat'           # syntax-highlighted `cat` (fzf preview via FZF_*_OPTS)
+brew 'mise'          # polyglot runtime manager (Node/Go/Ruby/Python; replaces nvm)
 
 # Cloud / deploy
 brew 'awscli'

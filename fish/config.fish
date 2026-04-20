@@ -71,6 +71,7 @@ abbr -a ys   yarn serve
 abbr -a yd   yarn dev
 abbr -a mw   make watch
 abbr -a ng   ngrok http 3000
+abbr -a rf   redis-cli FLUSHALL
 
 # ============================================================
 # Folder access  (functions defined in functions/code.fish)

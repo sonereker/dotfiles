@@ -83,7 +83,6 @@ abbr -a ng   ngrok http 3000
 # Tools
 # ============================================================
 zoxide init fish | source                          # `z <query>` smart cd
-command -q mise && mise activate fish | source     # polyglot runtime mgr (Node/Go/Ruby/Python)
 
 # ============================================================
 # Local-only overrides (secrets, machine-specific env)

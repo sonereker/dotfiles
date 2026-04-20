@@ -4,6 +4,7 @@ brew 'git'
 brew 'gh'
 brew 'tree'
 brew 'glow'
+brew 'typst'          # typesetting (TYPST_FONT_PATHS set in fish/config.fish)
 brew 'unar'           # extracts rar/zip/7z/etc (replaces deprecated `unrar`)
 
 # Languages / runtimes

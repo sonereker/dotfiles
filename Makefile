@@ -1,7 +1,8 @@
 DOTFILES := $(PWD)
 BREW_GEM := /opt/homebrew/opt/ruby/bin/gem
+FISH     := $(shell command -v fish)
 
-all: deps sync plugins
+all: deps sync shell plugins
 
 deps: ## Install Brewfile packages and required gems
 	brew bundle --file=$(DOTFILES)/Brewfile
@@ -23,6 +24,14 @@ sync: ## Symlink configs into ~/.config and ~ (idempotent)
 	# Don't show "last login" message on shell startup.
 	touch ~/.hushlogin
 
+shell: ## Make fish the default login shell (idempotent; prompts for sudo)
+	@[ -n "$(FISH)" ] || { echo "fish not found on PATH (run 'make deps' first)"; exit 1; }
+	# Register fish as a valid login shell so chsh will accept it.
+	@grep -qxF '$(FISH)' /etc/shells || echo '$(FISH)' | sudo tee -a /etc/shells >/dev/null
+	# Switch the login shell only if it isn't already fish.
+	@[ "$$(dscl . -read /Users/$$USER UserShell 2>/dev/null | awk '{print $$2}')" = "$(FISH)" ] \
+		|| chsh -s '$(FISH)'
+
 plugins: ## Install/refresh fish plugins declared in fish/fish_plugins
 	fish -c 'fisher update'
 
@@ -41,4 +50,4 @@ help: ## Show available targets
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
 		| awk 'BEGIN {FS = ":.*?## "}; {printf "  %-10s %s\n", $$1, $$2}'
 
-.PHONY: all deps sync plugins update clean help
+.PHONY: all deps sync shell plugins update clean help

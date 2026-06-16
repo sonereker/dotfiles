@@ -2,6 +2,19 @@ DOTFILES := $(PWD)
 BREW_GEM := /opt/homebrew/opt/ruby/bin/gem
 FISH     := $(shell command -v fish)
 
+# link SRC DEST — idempotent symlink. No-op if DEST already points at SRC;
+# relinks a wrong symlink; backs a pre-existing real file up to DEST.bak first
+# (apps like Zed write their own config on first launch, which would otherwise
+# block the link and silently leave our config unused).
+define link
+	@if [ "`readlink '$(2)' 2>/dev/null`" != "$(1)" ]; then \
+		if [ -e "$(2)" ] && [ ! -L "$(2)" ]; then \
+			echo "backing up existing $(2) -> $(2).bak"; mv "$(2)" "$(2).bak"; \
+		fi; \
+		ln -sfn "$(1)" "$(2)"; \
+	fi
+endef
+
 all: deps sync shell plugins
 
 deps: ## Install Brewfile packages and required gems
@@ -12,11 +25,11 @@ deps: ## Install Brewfile packages and required gems
 sync: ## Symlink configs into ~/.config and ~ (idempotent)
 	mkdir -p ~/.config/ghostty ~/.config/zed
 
-	[ -e ~/.config/fish ]              || ln -s $(DOTFILES)/fish              ~/.config/fish
-	[ -e ~/.gitconfig ]                || ln -s $(DOTFILES)/gitconfig         ~/.gitconfig
-	[ -e ~/.config/ghostty/config ]    || ln -s $(DOTFILES)/ghostty/config    ~/.config/ghostty/config
-	[ -e ~/.config/zed/settings.json ] || ln -s $(DOTFILES)/zed/settings.json ~/.config/zed/settings.json
-	[ -e ~/.config/zed/keymap.json ]   || ln -s $(DOTFILES)/zed/keymap.json   ~/.config/zed/keymap.json
+	$(call link,$(DOTFILES)/fish,$(HOME)/.config/fish)
+	$(call link,$(DOTFILES)/gitconfig,$(HOME)/.gitconfig)
+	$(call link,$(DOTFILES)/ghostty/config,$(HOME)/.config/ghostty/config)
+	$(call link,$(DOTFILES)/zed/settings.json,$(HOME)/.config/zed/settings.json)
+	$(call link,$(DOTFILES)/zed/keymap.json,$(HOME)/.config/zed/keymap.json)
 
 	# Seed config-local.fish from the example if it doesn't exist yet.
 	[ -e ~/.config/fish/config-local.fish ] || cp $(DOTFILES)/fish/config-local.fish.example ~/.config/fish/config-local.fish
